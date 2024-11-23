@@ -1,0 +1,9 @@
+{
+  "configurations": [
+    {
+      "name": "tracker调试",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/index.js"
+    }
+  ]
+}
