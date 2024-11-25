@@ -16,13 +16,13 @@ const parseOptions = {
 };
 const sourceTracker = readFileContent( soureFileList[0] )
 const astTracker = parser.parse( sourceTracker,parseOptions);
-const codeTracker = transformFromAstSync(astTracker,sourceTracker,{
+const {code} = transformFromAstSync(astTracker,sourceTracker,{
   plugins: [ [
     trackerPlugin,{
       trackerPath: 'tracker'
     }
   ]],
 })
-writeFileContent(bundleFileList[1],codeTracker)
+writeFileContent(bundleFileList[0],code)
 
 
