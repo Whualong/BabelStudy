@@ -1,4 +1,4 @@
 module.exports = {
-  init1: '你好',
-  init2: '你好${name}'
+  intl1: '你好',
+  intl2: '你好${name}'
 }

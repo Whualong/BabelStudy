@@ -4,6 +4,11 @@
       "name": "tracker调试",
       "request": "launch",
       "program": "${workspaceFolder}/src/index.js"
-    }
+    },
+    {
+      "name": "i18n调试",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/index.js"
+    },
   ]
 }

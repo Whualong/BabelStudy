@@ -1,23 +1,6 @@
-var _tracker2 = _interopRequireDefault(require("tracker")).default;
-function _interopRequireDefault(e) { _tracker2(); _tracker2(); return e && e.__esModule ? e : { default: e }; }
-var test = function () {
-  _tracker2();
-  console.log('a');
-};
-function test1() {
-  _tracker2();
-  console.log('test');
-}
-class Tes {
-  constructor(name) {
-    this.name = name;
-  }
-  getName() {
-    _tracker2();
-    return this.name;
-  }
-}
-() => {
-  _tracker2();
-  return '12345';
-};
+var _intl2 = _interopRequireDefault(require("intl")).default;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+const name1 = 'jacker';
+const name2 = /*i18n-disabled*/'杰克';
+const name1Tep = `hello${name1}`;
+const name2Tep = /*i18n-disabled*/`你好${name2}`;
