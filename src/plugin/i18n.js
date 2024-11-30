@@ -83,7 +83,7 @@ const i18nPlugin = declare((api, options) => {
         if (value) {
           let key = nextIntlKey();
           saveMapKey(state.file, key, value);
-          const replaceExpression = getReplaceExpression(path, key, state.intlUid);
+          const replaceExpression = getReplaceExpression(path, key, state.importedIntlId);
           path.replaceWith(replaceExpression);
           path.skip();
         }
