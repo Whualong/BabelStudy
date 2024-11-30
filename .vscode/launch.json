@@ -1,12 +1,7 @@
 {
   "configurations": [
     {
-      "name": "tracker调试",
-      "request": "launch",
-      "program": "${workspaceFolder}/src/index.js"
-    },
-    {
-      "name": "i18n调试",
+      "name": "启动调试",
       "request": "launch",
       "program": "${workspaceFolder}/src/index.js"
     },
