@@ -4,7 +4,14 @@ import pluginJs from "@eslint/js";
 export default [
   {
     files: ['**/*.js'],
-    languageOptions: { sourceType: "commonjs" }
+    languageOptions: { sourceType: "commonjs" },
+    rules: {
+      "no-multiple-empty-lines": {
+        max: 1,
+        maxEOF: 0,
+        maxBOF: 0
+      }
+    }
   },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
