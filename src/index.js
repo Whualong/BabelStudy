@@ -1,36 +1,33 @@
-const path = require("path");
 const parser = require("@babel/parser");
 const { transformFromAstSync } = require('@babel/core')
-const { readFileContent,writeFileContent} = require('./utils/common.js')
-const trackerPlugin = require('./plugin/tracker.js')
-const i18nPlugin = require('./plugin/i18n.js')
-const soureFileList = [
-  path.join(__dirname,'./source/track.js'),
-  path.join(__dirname,'./source/i18n.js')
-]
-const bundleFileList = [
-  path.join(__dirname,"./bundle/track.js"),
-  path.join(__dirname,'./bundle/i18n.js')
-]
+const { readFileContent, writeFileContent } = require('./utils/common.js')
+const pluginList = require('./plugin/index.js')
+const soureFileList = require('./source/index.js')
+const bundleFileList = require('./bundle/index.js')
 const parseOptions = {
   sourceType: "unambiguous",
   plugins: ['jsx'],
   sourceMapsEnabled: true
 };
-const sourceTracker = readFileContent( soureFileList[0] )
-const sourceI18n = readFileContent( soureFileList[1])
-const astTracker = parser.parse( sourceTracker,parseOptions);
-const astI18n = parser.parse( sourceI18n,parseOptions)
+const sourceContentList = soureFileList.map((item) => { return readFileContent(item) })
+const astTreeList = sourceContentList.map((item) => { return parser.parse(item, parseOptions) })
+const optionsList = [
+  { trackerPath: 'tracker' },
+  {}
+]
+function allSourceTransform(sourceList, bundleList, astList, pluginList, optionsList) {
+  sourceList.forEach((sourceItem, index) => {
+    const { code } = transformFromAstSync(astList[index], sourceItem, {
+      plugins: [
+        [
+          pluginList[index], optionsList[index]
+        ]
+      ],
+    })
+    writeFileContent(bundleList[index], code)
+  })
 
-const {code} = transformFromAstSync(astI18n,sourceI18n,{
-  plugins: [ 
-    [
-      i18nPlugin,{
-
-      }
-    ]
-  ],
-})
-writeFileContent(bundleFileList[0],code)
+}
 
 
+allSourceTransform(sourceContentList, bundleFileList, astTreeList, pluginList, optionsList)
