@@ -1,5 +1,6 @@
 const trackerPlugin = require('./tracker')
 const i18nPlugin = require('./i18n')
+const apiPlugin = require('./api')
 const path = require('path')
 module.exports = [
   {
@@ -12,6 +13,13 @@ module.exports = [
     plugin: i18nPlugin,
     options: {
       outputDir: path.join(__dirname, '../locale')
+    }
+  },
+  {
+    plugin: apiPlugin,
+    options: {
+      outputDir: path.join(__dirname, '../bundle'),
+      format: 'markdown'
     }
   }
 

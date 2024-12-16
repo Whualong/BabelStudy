@@ -5,7 +5,7 @@ const soureFileList = require('./source/index.js')
 const bundleFileList = require('./bundle/index.js')
 const parseOptions = {
   sourceType: "unambiguous",
-  plugins: ['jsx'],
+  plugins: ['jsx', 'typescript'],
   sourceMapsEnabled: true
 };
 const sourceContentList = soureFileList.map((item) => { return readFileContent(item) })

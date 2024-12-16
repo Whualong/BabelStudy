@@ -18,6 +18,7 @@
     "@babel/traverse": "^7.13.13",
     "@babel/types": "^7.13.14",
     "babel-plugin-tester": "^10.0.0",
+    "doctrine": "^3.0.0",
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
